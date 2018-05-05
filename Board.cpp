@@ -43,19 +43,19 @@ void Board::initBoard()
 	}
 }
 
-Board& Board::operator[](initializer_list<int> list)
+char &Board::operator[](list<int> list)
 {
-    auto i = list.begin();
-    row = *i; col = *(i+1);
+    row = list.front(), col=list.back();
     if (row>=rows || col>=rows || row<0 || col<0){
         IllegalCoordinateException ex;
         ex.setA(row); ex.setB(col);
         throw ex;
     }
-    return *this;
+    return game[row][col];
 }
 
-Board& Board::operator=(const char c)
+
+void Board::operator=(char c)
 {   
     if(c=='.') {
         initBoard();
@@ -64,11 +64,10 @@ Board& Board::operator=(const char c)
         game[row][col] = c;
     }
     else{
-     IllegalCharException ex;
+        IllegalCharException ex;
         ex.setInput(c);
         throw ex;
     }
-    return *this;
 }
 
 Board& Board::operator=(const Board& b)
@@ -93,5 +92,3 @@ Board& Board::operator=(const Board& b)
     }
     return *this;
 }
-
-
