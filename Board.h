@@ -1,38 +1,36 @@
 #pragma once
 #include <iostream>
+#include "Node.h"
 #include <exception>
 #include <list>
-
 using namespace std;
 
 class Board
 {
-    uint rows;
-    char** game;
-    int row,col;
-
     public:
-    Board(int n);
-    Board(const Board& other); // copy constructor
+    int rows;
+    Node **game;
+    Board(int r);
+    Board(const Board& other);
     ~Board();
     void initBoard();
-
-    char &operator[](list<int> list);
+    Node& operator[](list<int> list);
     Board& operator=(const Board& b);
-    void operator=(char c);
-    friend ostream& operator<<(ostream& os, const Board& b);
+    Board& operator=(char c);
+    friend ostream &operator<<(ostream &out, const Board &b);
 };
 
-inline ostream& operator<<(ostream& os, const Board& b)
+inline ostream &operator<<(ostream& out, const Board& b)
+{
+    for (int i = 0; i < b.rows; i++)
     {
-    for(int i=0; i<b.rows; i++){
-        for(int j=0; j<b.rows; j++){
-            os<<b.game[i][j];
-            }
-        os<<endl;
+        for (int j = 0; j < b.rows; j++){
+            cout << b.game[i][j].getNode();
         }
-    return os;
+        cout << endl;
     }
+    return out;
+}
 
 class IllegalCoordinateException : public exception
 {
@@ -53,6 +51,7 @@ class IllegalCoordinateException : public exception
 class IllegalCharException : public exception
 {
     char input;
+    
     public:
         char theChar()const
         {
@@ -60,4 +59,3 @@ class IllegalCharException : public exception
         }
         void setInput(int c){input=c;}
 };
-

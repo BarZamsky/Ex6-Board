@@ -1,87 +1,69 @@
-#include <iostream>
 #include "Board.h"
-using namespace std;
 
-Board::Board(const Board& other)
+Board::Board(int r)
 {
-    rows=other.rows;
-    game = new char*[rows];
+    rows=r;
+    game = new Node*[rows];
     for (int i = 0; i < rows; i++) {
-		game[i] = new char [rows];
-	}
-    for(int i = 0; i < rows; i++) {
-	    for(int j = 0; j < rows; j++) {
-			game[i][j] = other.game[i][j];
-		}
-	}
-}
-
-Board::Board(int n)
-{
-    rows=n;
-    row=0,col=0;
-    game = new char*[rows];
-    for (int i = 0; i < rows; i++) {
-		game[i] = new char [rows];
+		game[i] = new Node [rows];
 	}
     initBoard();
-}
-
-Board::~Board()
-{
-    for (int i = 0; i < rows; i++)
-		delete[] game[i];
-    delete [] game;
 }
 
 void Board::initBoard()
 {
     for(int i = 0; i < rows; i++) {
 		for(int j = 0; j < rows; j++) {
-			game[i][j] = '.';
+			game[i][j].setNode('.');
 		}
 	}
 }
 
-char &Board::operator[](list<int> list)
+Board::Board(const Board& other)
 {
-    row = list.front(), col=list.back();
-    if (row>=rows || col>=rows || row<0 || col<0){
+    rows=other.rows;
+    game = new Node*[rows];
+    for (int i = 0; i < rows; i++) {
+		game[i] = new Node [rows];
+        for(int j=0;j<rows;j++){
+            game[i][j]=other.game[i][j];
+        }
+	}
+}
+
+Board::~Board()
+{
+    for(int i=0;i<rows;i++){
+        delete[] game[i];
+    }
+    delete[] game;
+}
+
+Node& Board::operator[](list<int> list)
+{
+    int a = list.front(), b=list.back();
+    if(a<0 || a>=rows || b<0 || b>=rows)
+    {
         IllegalCoordinateException ex;
-        ex.setA(row); ex.setB(col);
+        ex.setA(a); ex.setB(b);
         throw ex;
-    }
-    return game[row][col];
+    }   
+    else
+        return game[a][b];
 }
 
-
-void Board::operator=(char c)
-{   
-    if(c=='.') {
-        initBoard();
-    }
-    else if (c=='X' || c== 'O'){
-        game[row][col] = c;
-    }
-    else{
-        IllegalCharException ex;
-        ex.setInput(c);
-        throw ex;
-    }
-}
-
-Board& Board::operator=(const Board& b)
+Board& Board::operator=(const Board &b)
 {
-    if (this==&b)
+     if (this==&b)
         return *this;
     if (b.rows!=this->rows) {
         for (int i = 0; i < rows; i++)
 		    delete[] game[i];
         delete [] game;
         rows = b.rows;
-        game = new char*[b.rows]; // init
+        game = new Node*[b.rows]; // init
         for (int i = 0; i < rows; i++) {
-		game[i] = new char [rows];
+		game[i] = new Node [rows];
 	    }
     }
             
@@ -91,4 +73,16 @@ Board& Board::operator=(const Board& b)
         }
     }
     return *this;
+}
+
+Board& Board::operator=(char c)
+{
+    if (c=='.') 
+        initBoard();
+    else
+    {
+       IllegalCharException ex;
+        ex.setInput(c);
+        throw ex; 
+    }
 }
