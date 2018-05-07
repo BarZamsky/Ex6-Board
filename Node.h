@@ -13,7 +13,7 @@ class Node
     Node& operator=(char val);
     bool operator==(char c) const;
     bool operator==(const Node& other) const;
-    bool Node::operator!=(char c) const;
+    bool operator!=(char c) const;
     operator char() const; //convet Node to char
     friend ostream& operator<< (ostream& os, Node& c);
 };
