@@ -73,9 +73,9 @@ Board& Board::operator=(const Board &b)
 Board& Board::operator=(char c)
 {
     if (c=='.') {
-        for (int j = 0; j < n; ++j) {
-            for (int i = 0; i < n; ++i) {
-                mat[i][j] = '.';
+        for (int j = 0; j < rows; ++j) {
+            for (int i = 0; i < rows; ++i) {
+                game[i][j] = '.';
             }
         }
     }
