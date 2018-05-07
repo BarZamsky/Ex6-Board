@@ -20,18 +20,6 @@ class Board
     friend ostream &operator<<(ostream &out, const Board &b);
 };
 
-inline ostream &operator<<(ostream& out, const Board& b)
-{
-    for (int i = 0; i < b.rows; i++)
-    {
-        for (int j = 0; j < b.rows; j++){
-            cout << b.game[i][j].getNode();
-        }
-        cout << endl;
-    }
-    return out;
-}
-
 class IllegalCoordinateException : public exception
 {
     int a,b;
