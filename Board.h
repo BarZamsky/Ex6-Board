@@ -17,7 +17,7 @@ class Board
     bool operator==(const Board& other) const;
     Node& operator[](list<int> list);
     Board& operator=(const Board& b);
-    Board& operator=(char c);
+    void operator=(char c);
     friend ostream &operator<<(ostream &out, const Board &b);
 };
 

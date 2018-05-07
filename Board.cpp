@@ -75,7 +75,7 @@ Board& Board::operator=(const Board &b)
     return *this;
 }
 
-Board& Board::operator=(char c)
+void Board::operator=(char c)
 {
     if (c=='.') 
         initBoard();
