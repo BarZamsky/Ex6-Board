@@ -13,11 +13,10 @@ class Board
     Board(int r);
     Board(const Board& other);
     ~Board();
-    void initBoard();
     bool operator==(const Board& other) const;
     Node& operator[](list<int> list);
     Board& operator=(const Board& b);
-    void operator=(char c);
+    Board& operator=(char c);
     friend ostream &operator<<(ostream &out, const Board &b);
 };
 
