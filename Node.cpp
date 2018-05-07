@@ -41,3 +41,7 @@ bool Node::operator==(const Node& other) const
 {
     return this->val = other.val;
 }
+
+bool Node::operator!=(char c) const {
+    return this->val != c;
+}
