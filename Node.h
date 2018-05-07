@@ -8,7 +8,7 @@ class Node
     public:
     Node();
     Node(char val);
-    Node(const& Node n);
+    Node(const Node& n);
     char getNode() const;
     Node& operator=(char val);
     bool operator==(char c) const;

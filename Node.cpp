@@ -12,7 +12,7 @@ Node::Node(char c)
         throw ex;
     }
 }
-Node::Node(const& Node n)
+Node::Node(const Node& n)
 {
     this->val = n.getNode();
 }
