@@ -11,6 +11,8 @@ class Node
     bool setNode(const char& val);
     const char getNode();
     Node& operator=(char val);
+    bool operator==(char c) const;
+    bool operator==(const Node& other) const
     operator char() const; //convet Node to char
     friend ostream& operator<< (ostream& os, Node& c);
 };

@@ -14,6 +14,7 @@ class Board
     Board(const Board& other);
     ~Board();
     void initBoard();
+    bool operator==(const Board& other) const;
     Node& operator[](list<int> list);
     Board& operator=(const Board& b);
     Board& operator=(char c);

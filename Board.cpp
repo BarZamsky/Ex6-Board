@@ -86,3 +86,16 @@ Board& Board::operator=(char c)
         throw ex; 
     }
 }
+
+bool Board::operator==(const Board &other) const
+{
+    if (rows != other.rows)
+        return false;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < rows; ++j) {
+            if (game[i][j] != other.game[i][j])
+                return false;
+        }
+    }
+    return true;
+}

@@ -31,3 +31,13 @@ Node::operator char() const
 {
     return this->val;
 }
+
+bool Node::operator==(char c) const
+{
+    return this->val = c;
+}
+
+bool Node::operator==(const Node& other) const
+{
+    return this->val = other.val;
+}
