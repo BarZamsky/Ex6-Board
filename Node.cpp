@@ -5,7 +5,7 @@ Node::Node(){}
 Node::Node(char c)
 {
     if(c=='X' || c== 'O' || c=='.')
-        this->val = val;
+        this->val = c;
     else{
         IllegalCharException ex;
         ex.setInput(val);
