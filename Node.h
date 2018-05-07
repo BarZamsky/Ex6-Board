@@ -15,11 +15,7 @@ class Node
     bool operator==(const Node& other) const;
     bool operator!=(char c) const;
     bool operator!=(const Node& other) const;
-    operator char() const; //convet Node to char
     friend ostream& operator<< (ostream& os, Node& c);
-    
-    private:
-    void setNode(char val);
 };
 inline ostream& operator<< (ostream& os, Node& n)
 {

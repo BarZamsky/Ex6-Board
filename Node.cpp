@@ -21,12 +21,6 @@ char Node::getNode() const
     return this->val;
 }
 
-// void Node::setNode(const char& val)
-// {
-//     this->val = val;
-// }
-
-
 Node& Node::operator=(char val)
 {
    if(val=='X' || val=='O' || val=='.'){
@@ -41,11 +35,6 @@ Node& Node::operator=(char val)
     }
     return *this;
 }
-
-// Node::operator char() const
-// {
-//     return this->val;
-// }
 
 bool Node::operator==(char c) const
 {
