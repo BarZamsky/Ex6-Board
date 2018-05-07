@@ -39,9 +39,13 @@ bool Node::operator==(char c) const
 
 bool Node::operator==(const Node& other) const
 {
-    return this->val = other.val;
+    return val = other.val;
 }
 
 bool Node::operator!=(char c) const {
-    return this->val != c;
+    return val != c;
+}
+
+bool Node::operator!=(const Node& other) const {
+    return val != other.val;
 }
