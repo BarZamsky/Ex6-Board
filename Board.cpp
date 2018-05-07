@@ -2,22 +2,22 @@
 
 Board::Board(int r)
 {
-    rows=r;
-    game = new Node*[rows];
+    this->rows=r;
+    this->game = new Node*[rows];
     for (int i = 0; i < rows; i++) {
-		game[i] = new Node [rows];
+		this->game[i] = new Node [rows];
 	}
     for(int i = 0; i < rows; i++) {
 		for(int j = 0; j < rows; j++) {
-			game[i][j].setNode('.');
+			game[i][j]= Node{'.'};
 		}
 	}
 }
 
 Board::Board(const Board& other)
 {
-    rows=other.rows;
-    game = new Node*[rows];
+    this->rows=other.rows;
+    this->game = new Node*[rows];
     for (int i = 0; i < rows; i++) {
 		this->game[i] = new Node [rows];
     }
@@ -66,7 +66,7 @@ Board& Board::operator=(const Board &b)
             
     for (int i=0; i<rows; ++i){
         for(int j=0;j<rows;j++){
-            game[i][j]=b.game[i][j].getNode();
+            game[i][j]=Node{b.game[i][j].getNode()};
         }
     }
     return *this;
@@ -77,7 +77,7 @@ Board& Board::operator=(char c)
     if (c=='.') {
         for (int j = 0; j < rows; ++j) {
             for (int i = 0; i < rows; ++i) {
-                game[i][j].setNode('.');
+                game[i][j] = '.';
             }
         }
     }
@@ -108,9 +108,9 @@ ostream &operator<<(ostream& out, const Board& b)
     for (int i = 0; i < b.rows; i++)
     {
         for (int j = 0; j < b.rows; j++){
-            cout << b.game[i][j].getNode();
+            out << b.game[i][j].getNode();
         }
-        cout << endl;
+        out << endl;
     }
     return out;
 }

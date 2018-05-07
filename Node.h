@@ -7,9 +7,9 @@ class Node
 
     public:
     Node();
-    //Node(char val);
-    void setNode(const char& val);
-    const char getNode();
+    Node(char val);
+    Node(const& Node n);
+    char getNode() const;
     Node& operator=(char val);
     bool operator==(char c) const;
     bool operator==(const Node& other) const;
@@ -17,6 +17,9 @@ class Node
     bool operator!=(const Node& other) const;
     operator char() const; //convet Node to char
     friend ostream& operator<< (ostream& os, Node& c);
+    
+    private:
+    void setNode(char val);
 };
 inline ostream& operator<< (ostream& os, Node& n)
 {
