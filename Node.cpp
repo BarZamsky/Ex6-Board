@@ -7,7 +7,7 @@ const char Node::getNode()
     return this->val;
 }
 
-bool Node::setNode(const char& val)
+void Node::setNode(const char& val)
 {
     this->val = val;
 }

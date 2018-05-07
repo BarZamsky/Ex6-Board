@@ -8,7 +8,7 @@ class Node
     public:
     Node();
     //Node(char val);
-    bool setNode(const char& val);
+    void setNode(const char& val);
     const char getNode();
     Node& operator=(char val);
     bool operator==(char c) const;
