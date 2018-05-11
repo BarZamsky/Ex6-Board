@@ -5,13 +5,13 @@ Board::Board(int r)
     this->rows=r;
     this->game = new Node*[rows];
     for (int i = 0; i < rows; i++) {
-		this->game[i] = new Node [rows];
-	}
+        this->game[i] = new Node [rows];
+    }
     for(int i = 0; i < rows; i++) {
-		for(int j = 0; j < rows; j++) {
-			game[i][j]= Node{'.'};
-		}
-	}
+        for(int j = 0; j < rows; j++) {
+            game[i][j]= Node{'.'};
+        }
+    }
 }
 
 Board::Board(const Board& other)
@@ -19,7 +19,7 @@ Board::Board(const Board& other)
     this->rows=other.rows;
     this->game = new Node*[rows];
     for (int i = 0; i < rows; i++) {
-		this->game[i] = new Node [rows];
+        this->game[i] = new Node [rows];
     }
     for(int i=0;i<rows;i++){
         for(int j=0;j<rows;j++){
@@ -44,26 +44,26 @@ Node& Board::operator[](list<int> list)
         IllegalCoordinateException ex;
         ex.setA(a); ex.setB(b);
         throw ex;
-    }   
+    }
     return game[a][b];
 }
 
 Board& Board::operator=(const Board &b)
 {
-     if (this==&b)
+    if (this==&b)
         return *this;
     if (b.rows!=this->rows) {
         for (int i = 0; i < rows; i++)
-		    delete[] game[i];
+            delete[] game[i];
         delete [] game;
 
         rows = b.rows;
         game = new Node*[b.rows]; // init
         for (int i = 0; i < rows; i++) {
-		game[i] = new Node [rows];
-	    }
+            game[i] = new Node [rows];
+        }
     }
-            
+
     for (int i=0; i<rows; ++i){
         for(int j=0;j<rows;j++){
             game[i][j]=Node{b.game[i][j].getNode()};
@@ -83,24 +83,11 @@ Board& Board::operator=(char c)
     }
     else
     {
-       IllegalCharException ex;
+        IllegalCharException ex;
         ex.setInput(c);
-        throw ex; 
+        throw ex;
     }
     return *this;
-}
-
-bool Board::operator==(const Board &other) const
-{
-    if (rows != other.rows)
-        return false;
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < rows; ++j) {
-            if (game[i][j] != other.game[i][j])
-                return false;
-        }
-    }
-    return true;
 }
 
 ostream &operator<<(ostream& out, const Board& b)

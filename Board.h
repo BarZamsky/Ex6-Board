@@ -7,13 +7,12 @@ using namespace std;
 
 class Board
 {
-    public:
+public:
     int rows;
     Node **game;
     Board(int r);
     Board(const Board& other);
     ~Board();
-    bool operator==(const Board& other) const;
     Node& operator[](list<int> list);
     Board& operator=(const Board& b);
     Board& operator=(char c);
@@ -23,27 +22,27 @@ class Board
 class IllegalCoordinateException : public exception
 {
     int a,b;
-    public: 
-        void setA(int row){
-            this->a=row;
-            }
-        void setB(int col){
-            this->b=col;
-            }
-        string theCoordinate ()const
-        {
-            return to_string(a)+","+to_string(b);
-        }
+public:
+    void setA(int row){
+        this->a=row;
+    }
+    void setB(int col){
+        this->b=col;
+    }
+    string theCoordinate ()const
+    {
+        return to_string(a)+","+to_string(b);
+    }
 };
 
 class IllegalCharException : public exception
 {
     char input;
-    
-    public:
-        char theChar()const
-        {
-            return input;
-        }
-        void setInput(int c){input=c;}
+
+public:
+    char theChar()const
+    {
+        return input;
+    }
+    void setInput(int c){input=c;}
 };

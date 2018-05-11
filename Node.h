@@ -5,17 +5,14 @@ class Node
 {
     char val;
 
-    public:
+public:
     Node();
     Node(char val);
-    Node(const Node& n);
     char getNode() const;
     Node& operator=(char val);
-    bool operator==(char c) const;
-    bool operator==(const Node& other) const;
-    bool operator!=(char c) const;
-    bool operator!=(const Node& other) const;
     friend ostream& operator<< (ostream& os, Node& c);
+    void setC(char c);
+    operator char() const { return val; }
 };
 inline ostream& operator<< (ostream& os, Node& n)
 {
